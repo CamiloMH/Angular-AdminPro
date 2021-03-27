@@ -16,10 +16,9 @@ export class BreadcrumbsComponent implements OnDestroy {
 
   constructor(private router: Router) {
     this.titleSubs$ = this.getDataRutas().subscribe(data => {
-                                      console.log(data);
-                                      this.title = data.title;
-                                      document.title = `AdminPro - ${data.title}`;
-                                      });
+      this.title = data.title;
+      document.title = `AdminPro - ${data.title}`;
+    });
   }
   ngOnDestroy(): void {
     this.titleSubs$.unsubscribe();

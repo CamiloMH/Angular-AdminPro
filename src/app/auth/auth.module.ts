@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 
 //Modulos
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 //Componentes
@@ -21,9 +22,11 @@ import { LoginComponent } from './login/login.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  exports:[
+  exports: [
     LoginComponent,
     RegisterComponent,
   ]

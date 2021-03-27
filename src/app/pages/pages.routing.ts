@@ -1,6 +1,8 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+//Guards
+import { AuthGuard } from '../guards/auth.guard';
 
 //Componentes
 import { PagesComponent } from './pages.component';
@@ -15,14 +17,15 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: PagesComponent,
+    canActivate: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent, data: { title: 'Dashborad'} },
-      { path: 'progress', component: ProgressComponent, data: { title: 'ProgressBar'} },
-      { path: 'grafica1', component: Grafica1Component, data: { title: 'Gráfica'} },
-      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Temas Settings'} },
-      { path: 'promesas', component: PromesasComponent, data: { title: 'Promesas'} },
-      { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs'} },
-      
+      { path: '', component: DashboardComponent, data: { title: 'Dashborad' } },
+      { path: 'progress', component: ProgressComponent, data: { title: 'ProgressBar' } },
+      { path: 'grafica1', component: Grafica1Component, data: { title: 'Gráfica' } },
+      { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Temas Settings' } },
+      { path: 'promesas', component: PromesasComponent, data: { title: 'Promesas' } },
+      { path: 'rxjs', component: RxjsComponent, data: { title: 'RxJs' } },
+
     ],
   },
 
@@ -32,4 +35,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class pagesRoutingModule {}
+export class pagesRoutingModule { }
