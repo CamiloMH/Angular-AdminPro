@@ -15,11 +15,11 @@ export class RegisterComponent {
 
 
   public registerForm = this.fb.group({
-    nombre: ['Camilo', [Validators.required, Validators.minLength(2)]],
-    email: ['test100@gmail.com', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
-    password: ['123456', [Validators.required, Validators.minLength(6)]],
-    password2: ['123456', [Validators.required, Validators.minLength(6)]],
-    terminos: [true, [Validators.required]],
+    nombre: ['', [Validators.required, Validators.minLength(2)]],
+    email: ['', [Validators.required, Validators.pattern('^([\\w-]+(?:\\.[\\w-]+)*)@((?:[\\w-]+\\.)*\\w[\\w-]{0,66})\\.([A-Za-z]{2,6}(?:\\.[A-Za-z]{2,6})?)$')]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    password2: ['', [Validators.required, Validators.minLength(6)]],
+    terminos: [false, [Validators.required]],
   }, {
     validators: this.passwordsIguales('password', 'password2')
   });
@@ -40,6 +40,12 @@ export class RegisterComponent {
 
     this.usuarioService.crearUsuario(this.registerForm.value)
       .subscribe(resp => {
+        Swal.fire({
+          icon: 'success',
+          title: 'Bienvenido ' + this.registerForm.value.nombre,
+          showConfirmButton: false,
+          timer: 1500
+        });
         /* -------------------------- Redirect al dashboard ------------------------- */
         this.router.navigateByUrl('/');
       }, (err) => {

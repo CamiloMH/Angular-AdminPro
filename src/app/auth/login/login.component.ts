@@ -1,6 +1,6 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2'
 
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   public auth2: any;
 
   public loginForm = this.fb.group({
-    email: [localStorage.getItem('email') || '', [Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
+    email: [localStorage.getItem('email') || 'Ana@gmail.com', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
+    password: ['123456', [Validators.required, Validators.minLength(6)]],
     remember: [false]
   });
 
@@ -38,6 +38,9 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.formSubmitted = true
+    console.log(this.loginForm.value);
+    this.loginForm.value.email.toLowerCase();
+    console.log(this.loginForm.value.email);
 
     if (this.loginForm.invalid) {
       return;
@@ -45,6 +48,12 @@ export class LoginComponent implements OnInit {
 
     this.usuarioService.login(this.loginForm.value).subscribe(resp => {
 
+      Swal.fire({
+        icon: 'success',
+        title: 'Bienvenido!',
+        showConfirmButton: false,
+        timer: 1500
+      });
       if (this.loginForm.get('remember').value) {
         localStorage.setItem('email', this.loginForm.get('email').value)
       } else {
