@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public auth2: any;
 
   public loginForm = this.fb.group({
-    email: [localStorage.getItem('email') || 'Ana@gmail.com', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
+    email: [localStorage.getItem('email') || '', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}$')]],
     password: ['123456', [Validators.required, Validators.minLength(6)]],
     remember: [false]
   });
@@ -39,8 +39,6 @@ export class LoginComponent implements OnInit {
   login() {
     this.formSubmitted = true
     console.log(this.loginForm.value);
-    this.loginForm.value.email.toLowerCase();
-    console.log(this.loginForm.value.email);
 
     if (this.loginForm.invalid) {
       return;
