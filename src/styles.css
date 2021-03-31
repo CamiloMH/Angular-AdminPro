@@ -30,9 +30,14 @@
 
 .w100 {
   width: 100px;
+  height: 100%;
 }
 .w140 {
   width: 140px;
+  height: 100%;
+}
+.w200 {
+  width: 200px;
   height: 100%;
 }
 

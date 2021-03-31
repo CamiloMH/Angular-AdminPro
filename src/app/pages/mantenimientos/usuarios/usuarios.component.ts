@@ -27,7 +27,8 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
   constructor(private usuarioService: UsuarioService,
     private buscarService: BusquedasService,
-    private modalImagenService: ModalImagenService) { }
+    private modalImagenService: ModalImagenService,
+  ) { }
 
   ngOnDestroy(): void {
     this.imgSubs.unsubscribe();
@@ -77,7 +78,7 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       return this.usuarios = this.usuariosTemp;
     }
 
-    this.buscarService.buscar('usuarios', termino).subscribe(resp => {
+    this.buscarService.buscar('usuarios', termino).subscribe((resp: Usuario[]) => {
       this.usuarios = resp;
     });
   }
@@ -102,7 +103,10 @@ export class UsuariosComponent implements OnInit, OnDestroy {
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, Borrar'
+      confirmButtonText: 'Si, Borrar',
+      showClass: {
+        popup: 'animated fadeInDown'
+      }
     }).then((result) => {
       if (result.isConfirmed) {
 
@@ -110,11 +114,14 @@ export class UsuariosComponent implements OnInit, OnDestroy {
 
           this.cargarUsuarios();
           Swal.fire({
-            title: 'Borrado!',
+            title: 'Usuario Borrado!',
             text: `${usuario.nombre} fue borrado exitosamente.`,
             icon: 'success',
             showConfirmButton: false,
-            timer: 1300
+            timer: 1300,
+            hideClass: {
+              popup: 'animated fadeOutUp'
+            }
           }
 
           )

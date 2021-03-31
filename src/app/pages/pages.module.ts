@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { SharedModule } from '../shared/shared.module';
+import { PipeModule } from '../pipes/pipe.module';
 
 
 //Componentes
@@ -18,6 +19,9 @@ import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+import { HospitalesComponent } from './mantenimientos/hospitales/hospitales.component';
+import { MedicosComponent } from './mantenimientos/medicos/medicos.component';
+import { MedicoComponent } from './mantenimientos/medicos/medico.component';
 
 
 
@@ -34,7 +38,10 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     PromesasComponent,
     RxjsComponent,
     PerfilComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    HospitalesComponent,
+    MedicosComponent,
+    MedicoComponent
   ],
   imports: [
     FormsModule,
@@ -43,6 +50,7 @@ import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component'
     SharedModule,
     RouterModule,
     ComponentsModule,
+    PipeModule,
 
   ],
   exports: [
