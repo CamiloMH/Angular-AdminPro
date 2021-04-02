@@ -84,7 +84,7 @@ export class MedicoComponent implements OnInit, OnDestroy {
         this.medicoForm.setValue({ nombre, hospital: _id });
 
       }, err => {
-        return this.router.navigateByUrl(`/dashboard/medicos`);
+        return this.router.navigateByUrl(`/nopagefound`);
 
       })
 

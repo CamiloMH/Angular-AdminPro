@@ -134,7 +134,6 @@ export class UsuariosComponent implements OnInit, OnDestroy {
   cambiarRole(usuario: Usuario) {
 
     this.usuarioService.actulizarRol(usuario).subscribe(resp => {
-      console.log(resp);
     })
   }
 

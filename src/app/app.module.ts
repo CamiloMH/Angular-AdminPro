@@ -10,6 +10,7 @@ import { AuthModule } from './auth/auth.module';
 //Componentes
 import { AppComponent } from './app.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -23,6 +24,7 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
     AppRoutingModule,
     PagesModule,
     AuthModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
